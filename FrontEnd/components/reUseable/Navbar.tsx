@@ -1,12 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 export const NavBar = ()=>{
     const [menu, setMenu] = useState(false);
-
-    
     return(
-        <nav className="flex px-10  md:px-20 lg:px-40 py-5 justify-between items-center shadow-sm fixed top-0 w-screen bg-slate-200 shadow-gray-400 dark:shadow-slate-800 dark:bg-slate-900 dark:text-white dark:text-grey-900 font-main font-semibold">
+        <nav 
+            className="flex px-10  md:px-20 lg:px-40 py-5 justify-between items-center shadow-sm fixed top-0 w-screen bg-slate-200 shadow-gray-400 dark:shadow-slate-800 dark:bg-slate-900 dark:text-white dark:text-grey-900 font-main font-semibold"
+        >
             <div className=" text-2xl sm:text-3xl">LOGO</div>
             
             <ul className="md:flex list-none gap-6 text-lg items-center hidden ">
@@ -24,7 +25,7 @@ export const NavBar = ()=>{
             </div>
 
             <div className={` flex md:hidden fixed bg-orange-700 h-screen w-screen left-0 p-6 justify-between ${menu ? "top-0" : "top-[-100%]"} transition-all`}>
-                <ul className=" list-none gap-6 text-lg items-center flex flex-col  text-4xl">
+                <ul className=" list-none gap-6 items-center flex flex-col  text-4xl">
                     <NavEl text="Home"/>
                     <NavEl text="About"/>
                     <NavEl text="Contact"/>
@@ -37,7 +38,7 @@ export const NavBar = ()=>{
         </nav>
     )
 }
-const NavEl = (props: any)=>{
+const NavEl= (props: any)=>{
     return(
     <li>
         <Link href="#">
@@ -52,7 +53,7 @@ const NavEl = (props: any)=>{
 export const ThemeButton = ()=>{
     const [darkTheme, setDarkTheme] = useState(false);
     useEffect(()=>{
-        if( !('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches){
+        if( (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) || localStorage.theme === 'dark'){
             localStorage.setItem("theme", "dark")
             setDarkTheme(true)
         }else if ( !('theme' in localStorage) ) {
@@ -70,7 +71,9 @@ export const ThemeButton = ()=>{
     },[darkTheme])
 
     const setOnStorage = (b : boolean) =>{
-        localStorage.setItem("theme", b ? "dark": "light")
+        localStorage.setItem("theme", b ? "dark": "light");
+        setDarkTheme(b);
+
     }
  return(
      <>
@@ -79,7 +82,6 @@ export const ThemeButton = ()=>{
             className={`text-2xl cursor-pointer ${ darkTheme ? "text-yellow-400" : "text-blue-900"}`}
             onClick={()=>{
                 setOnStorage(!darkTheme);
-                setDarkTheme(!darkTheme);
             }}
         />
     </>
