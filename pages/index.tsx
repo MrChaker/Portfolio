@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 import { useMenuContext, useThemeContext } from '../FrontEnd/components/layout'
 import { Button } from '../FrontEnd/components/reUseable/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import useMouse from '@react-hook/mouse-position'
+import { useRef } from 'react'
 const Home: NextPage = () => {
   return (
     <>
@@ -14,6 +16,20 @@ const Home: NextPage = () => {
 const Header = () =>{
   const { menu }= useMenuContext();
   const { darkTheme } = useThemeContext();
+  
+  const ImageAnimation = {
+    init: {
+      scale: 0,
+      transition: { delay: 1.2 }
+    },
+    normal: {
+      scale: 1,
+    },
+    scaleMore: {
+      scale: 1.4,
+      transition: { stifness: 0 }
+    }
+  }
   return(
     <>
       <div className=" flex gap-10 flex-col-reverse md:flex-row justify-between items-center">
@@ -31,9 +47,12 @@ const Header = () =>{
           />
         </div>
         <motion.div 
-            initial={{  scale: 0 }}
-            animate={{  scale: 1}}
-            transition={{ type: "spring", stiffness: 200, delay: 1 }}
+            variants={ImageAnimation}
+            initial= "init"
+            animate = "normal"
+            whileHover= "scaleMore"
+            transition={{ type: "spring", stiffness: 200 }}
+            
             className={`relative ${ menu ? "hidden" : ""}`}/* "fancy min-w-[18rem] min-h-[18rem] w-72 h-72 lg:w-96 lg:h-96 lg:min-w-[24rem] lg:min-h-[24rem]  relative " */>
               <div className="lg:min-w-[400px] lg:min-h-[470px] min-w-[320px] min-h-[350px] ">
                 <Image src="/Saly-13.png" alt="me" width={450} height={470} />

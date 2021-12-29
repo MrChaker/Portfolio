@@ -7,21 +7,13 @@ export const Button = (props: any) => {
     const ref = useRef(null);
     const pointerPos = useMouse(ref, {
         enterDelay: 100,
-        leaveDelay: 100,
+        leaveDelay: 10,
+        fps: 60
       })
-    const image3D = {
-        hidden: { scale: 0 },
-        show: {
-          scale: 1,
-          /* transition: {
-            delayChildren: 0.5
-          } */
-        }
-      }
+    
       
     return(
         <motion.div 
-            variants={image3D}
             ref = {ref}
             initial = {{x: '-100vw'}}
             onMouseOver={()=>setAnimateImage(true)}
