@@ -1,12 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useContext } from "react";
+import { useMenuContext, useThemeContext } from "../layout";
+
 export const NavBar = ()=>{
-    const [menu, setMenu] = useState(false);
+    const { menu, setMenu } = useMenuContext();
     return(
+        
         <nav 
-            className="flex px-10  md:px-20 lg:px-40 py-5 justify-between items-center shadow-sm fixed top-0 w-screen bg-slate-200 shadow-gray-400 dark:shadow-slate-800 dark:bg-slate-900 dark:text-white dark:text-grey-900 font-main font-semibold"
+            className="flex px-10  md:px-20 lg:px-40 py-5 justify-between items-center shadow-sm fixed top-0 w-screen bg-slate-200 shadow-gray-400 dark:shadow-slate-800 dark:bg-slate-900 dark:text-white dark:text-grey-900 font-main font-semibold z-30"
         >
             <div className=" text-2xl sm:text-3xl">LOGO</div>
             
@@ -24,7 +27,7 @@ export const NavBar = ()=>{
                 <ThemeButton />
             </div>
 
-            <div className={` flex md:hidden fixed bg-orange-700 h-screen w-screen left-0 p-6 justify-between ${menu ? "top-0" : "top-[-100%]"} transition-all`}>
+            <div className={` flex md:hidden fixed bg-orange-700 h-screen w-screen left-0 p-6 justify-between ${menu ? "top-0" : "top-[-100%]"} transition-all z-10`}>
                 <ul className=" list-none gap-6 items-center flex flex-col  text-4xl">
                     <NavEl text="Home"/>
                     <NavEl text="About"/>
@@ -51,7 +54,7 @@ const NavEl= (props: any)=>{
 }
 
 export const ThemeButton = ()=>{
-    const [darkTheme, setDarkTheme] = useState(false);
+    const {darkTheme, setDarkTheme} = useThemeContext();
     useEffect(()=>{
         if( (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) || localStorage.theme === 'dark'){
             localStorage.setItem("theme", "dark")
