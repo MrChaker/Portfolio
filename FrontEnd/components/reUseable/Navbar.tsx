@@ -27,7 +27,7 @@ export const NavBar = ()=>{
                 <ThemeButton />
             </div>
 
-            <div className={` flex md:hidden fixed bg-orange-700 h-screen w-screen left-0 p-6 justify-between ${menu ? "top-0" : "top-[-100%]"} transition-all z-10`}>
+            <div className={` flex md:hidden fixed bg-orange-700 h-screen w-screen left-0 p-6 justify-between ${menu ? "top-0" : "top-[-150%]"} transition-all z-50`}>
                 <ul className=" list-none gap-6 items-center flex flex-col  text-4xl">
                     <NavEl text="Home"/>
                     <NavEl text="About"/>

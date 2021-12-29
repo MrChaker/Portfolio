@@ -4,26 +4,37 @@ import { motion } from 'framer-motion'
 import { useMenuContext, useThemeContext } from '../FrontEnd/components/layout'
 import { Button } from '../FrontEnd/components/reUseable/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import useMouse from '@react-hook/mouse-position'
-import { useRef } from 'react'
+import { Contact } from '../FrontEnd/components/Contact'
+import { createContext, useContext, useState } from 'react'
+export type IsBlured = {
+  isBlured: boolean,
+  setIsBlured:(b: boolean) => void
+}
+export const BlurContext = createContext<IsBlured>({
+  isBlured: false,
+  setIsBlured: () => false
+});
+export const useBlurContext = () => useContext(BlurContext);
 const Home: NextPage = () => {
+  const [ isBlured, setIsBlured ] = useState(false);
   return (
-    <>
+    <BlurContext.Provider value={{ isBlured, setIsBlured }}>
       <Header />
-    </>
+      <Contact />
+    </BlurContext.Provider >
   )
 }
 const Header = () =>{
   const { menu }= useMenuContext();
   const { darkTheme } = useThemeContext();
-  
+  const { isBlured, setIsBlured } = useBlurContext();
   const ImageAnimation = {
     init: {
       scale: 0,
       transition: { delay: 1.2 }
     },
     normal: {
-      scale: 1,
+      scale: 1.2,
     },
     scaleMore: {
       scale: 1.4,
@@ -32,7 +43,7 @@ const Header = () =>{
   }
   return(
     <>
-      <div className=" flex gap-10 flex-col-reverse md:flex-row justify-between items-center">
+      <div className={` flex gap-10 flex-col-reverse  md:flex-row justify-between items-center ${isBlured ? " blur-sm ": ""}`}>
         <div className="text-3xl lg:text-5xl text-slate-900 dark:text-slate-200 max-w-sm text-center md:text-left">
           <h1>Hello 👋, I&apos;m Chaker</h1>
           <p className='text-xl lg:text-3xl my-7'>Web developer , trying to find meaning in life after achieving 0.1% of life goals </p>
@@ -44,6 +55,7 @@ const Header = () =>{
             leftIcon = { <FontAwesomeIcon icon="envelope" />}
             rounded
             Image3D = "/Message.png"
+            onClick = {()=>setIsBlured(true)}
           />
         </div>
         <motion.div 

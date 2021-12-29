@@ -18,8 +18,9 @@ export const Button = (props: any) => {
             initial = {{x: '-100vw'}}
             onMouseOver={()=>setAnimateImage(true)}
             onMouseLeave={()=>setAnimateImage(false)}
+            onClick={ props.onClick }
             animate = {{x: 0}}
-            className={`flex gap-4 cursor-pointer p-4 px-8 border-[${ props.color }] ${ props.rounded ? 'rounded-full' : 'rounded-sm'} justify-center border-solid border hover:shadow-2xl`} 
+            className={`flex gap-4 cursor-pointer p-4 px-8 border-[${ props.color }] ${ props.rounded ? 'rounded-full' : 'rounded-sm'} justify-center border-solid border ${props.style}`} 
             style={{ color: props.outline ? props.color : props.txtColor, backgroundColor: props.outline ? 'transparent' : props.color, fontSize: props.size || '1.25rem', display: props.block ? 'block' : 'inline-block' }}
         
         >   
