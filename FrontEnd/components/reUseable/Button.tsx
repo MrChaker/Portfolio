@@ -64,10 +64,10 @@ export const Button = (props: any) => {
                     onMouseOver={()=>setAnimateImage(true)}
                     onMouseLeave={()=>setAnimateImage(false)}
                     onClick={ props.onClick }
-                    animate = {{ scale: 1 }}
+                    animate = {{ scale: 0.8 }}
                     exit={{ scale: 0 }}
                     /* transition={{ duration: 0.6, stifness: 90 }} */
-                    className={` left-[85%] top-[85%] cursor-pointer pt-4 text-center rounded-full border-solid border ${props.style} fixed w-16 h-16 text-xl`} 
+                    className={` left-[75%] sm:left-[85%] top-[88%] cursor-pointer pt-4 text-center rounded-full border-solid border ${props.style} fixed w-16 h-16 sm:text-xl z-0`} 
                     style={{ color: props.outline ? props.color : props.txtColor, backgroundColor: props.outline ? 'transparent' : props.color, fontSize: props.size || '1.25rem', borderColor: props.color }}
                 >   
                 {
