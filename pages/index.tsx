@@ -43,7 +43,7 @@ const Header = () =>{
   }
   return(
     <>
-      <div className={` flex gap-10 flex-col-reverse  md:flex-row justify-between items-center ${isBlured ? " blur-sm ": ""}`}>
+      <div className={` flex gap-10 flex-col-reverse   md:flex-row justify-between items-center ${isBlured ? " brightness-50 ": ""}`}>
         <div className="text-3xl lg:text-5xl text-slate-900 dark:text-slate-200 max-w-sm text-center md:text-left">
           <h1>Hello 👋, I&apos;m Chaker</h1>
           <p className='text-xl lg:text-3xl my-7'>Web developer , trying to find meaning in life after achieving 0.1% of life goals </p>
