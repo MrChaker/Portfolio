@@ -5,7 +5,7 @@ import { useMenuContext, useThemeContext } from '../FrontEnd/components/layout'
 import { Button } from '../FrontEnd/components/reUseable/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Contact } from '../FrontEnd/components/Contact'
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react';
 export type IsBlured = {
   isBlured: boolean,
   setIsBlured:(b: boolean) => void
@@ -17,10 +17,29 @@ export const BlurContext = createContext<IsBlured>({
 export const useBlurContext = () => useContext(BlurContext);
 const Home: NextPage = () => {
   const [ isBlured, setIsBlured ] = useState(false);
+  /* const [ observed, setObserved ] = useState(false);
+  useEffect(() => {
+    let options = {
+      root: document.querySelector('#screen'),
+      rootMargin: '100px',
+      threshold: 1.0
+    }
+    let observer = new IntersectionObserver(()=>{
+      setObserved(true)
+      console.log('hihi');
+    }, options);
+    let target =  document.querySelector('#btn') || document.body ;
+    console.log(target)
+    observer.observe(target);
+  }, [observed]) */
+  
+
+
   return (
     <BlurContext.Provider value={{ isBlured, setIsBlured }}>
       <Header />
       <Contact />
+      <Experience />
     </BlurContext.Provider >
   )
 }
@@ -78,6 +97,16 @@ const Header = () =>{
           </div> */}
 
         </motion.div>
+      </div>
+    </>
+  )
+}
+
+const Experience = () =>{
+  return (
+    <>
+      <div className="min-h-screen">
+
       </div>
     </>
   )
