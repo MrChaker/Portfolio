@@ -6,9 +6,9 @@
 * {
   box-sizing: border-box;
 }
-/* .fancy {
-  border-radius: 37% 63% 27% 73% / 38% 63% 37% 62%;
+.lightShadow {
+  box-shadow: 0 0 10px #0f172a45;
 }
-.fancy-2 {
-  border-radius: 40% 38% 31% 33% / 40% 41% 44% 43%;
-} */
+.darkShadow {
+  box-shadow: 0 0 10px #fff;
+}

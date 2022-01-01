@@ -7,7 +7,7 @@ export const Contact = () => {
     const { isBlured, setIsBlured } = useBlurContext();
     return(
         <>
-            <div className={`fixed top-1/2 left-1/2 z-40 translate-x-[-50%] translate-y-[-50%] h-[600px]  lg:w-[1000px] sm:w-[800px] w-5/6 bg-slate-200 rounded-lg backdrop-blur-sm p-4 px-11 text-slate-700 text-xl ${ !isBlured ? 'hidden' : '' }  overflow-scroll md:overflow-auto`}>
+            <div className={`fixed top-1/2 left-1/2 z-40 translate-x-[-50%] translate-y-[-50%] h-[600px]  lg:w-[1000px] sm:w-[800px] w-[99%] bg-slate-200 rounded-lg shadow-light py-8 sm:py-4 px-11 text-slate-700 text-base sm:text-xl ${ !isBlured ? 'hidden' : '' }  overflow-scroll md:overflow-auto`}>
                 <div className=" text-right ">
                         <FontAwesomeIcon 
                             icon="times"  

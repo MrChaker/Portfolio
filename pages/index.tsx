@@ -3,9 +3,12 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useMenuContext, useThemeContext } from '../FrontEnd/components/layout'
 import { Button } from '../FrontEnd/components/reUseable/Button'
+import { ButtonC } from '../FrontEnd/components/reUseable/ButtonC'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Contact } from '../FrontEnd/components/Contact'
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState } from 'react';
+import { GridPopUp } from '../FrontEnd/components/reUseable/GridPopUp'
 export type IsBlured = {
   isBlured: boolean,
   setIsBlured:(b: boolean) => void
@@ -17,29 +20,11 @@ export const BlurContext = createContext<IsBlured>({
 export const useBlurContext = () => useContext(BlurContext);
 const Home: NextPage = () => {
   const [ isBlured, setIsBlured ] = useState(false);
-  /* const [ observed, setObserved ] = useState(false);
-  useEffect(() => {
-    let options = {
-      root: document.querySelector('#screen'),
-      rootMargin: '100px',
-      threshold: 1.0
-    }
-    let observer = new IntersectionObserver(()=>{
-      setObserved(true)
-      console.log('hihi');
-    }, options);
-    let target =  document.querySelector('#btn') || document.body ;
-    console.log(target)
-    observer.observe(target);
-  }, [observed]) */
-  
-
-
   return (
     <BlurContext.Provider value={{ isBlured, setIsBlured }}>
       <Header />
       <Contact />
-      <Experience />
+      <GridPopUp />
     </BlurContext.Provider >
   )
 }
@@ -62,11 +47,11 @@ const Header = () =>{
   }
   return(
     <>
-      <div className={` flex gap-10 flex-col-reverse   md:flex-row justify-between items-center ${isBlured ? " brightness-50 ": ""}`}>
+      <div className={` flex gap-10 flex-col-reverse   md:flex-row justify-between items-center ${isBlured ? " blur-sm ": ""}`}>
         <div className="text-3xl lg:text-5xl text-slate-900 dark:text-slate-200 max-w-sm text-center md:text-left">
           <h1>Hello 👋, I&apos;m Chaker</h1>
           <p className='text-xl lg:text-3xl my-7'>Web developer , trying to find meaning in life after achieving 0.1% of life goals </p>
-          <Button 
+          <ButtonC 
             color = { darkTheme ? '#e2e8f0' : `#0f172a` }
             txtColor = { darkTheme ? `#0f172a` : '#e2e8f0' }
             text = "Contact me"
@@ -102,13 +87,5 @@ const Header = () =>{
   )
 }
 
-const Experience = () =>{
-  return (
-    <>
-      <div className="min-h-screen">
 
-      </div>
-    </>
-  )
-}
 export default Home
