@@ -10,9 +10,12 @@ export const NavBar = ()=>{
         
         <nav
             id = "nav" 
-            className="flex px-10  md:px-20 lg:px-40 py-5 justify-between items-center shadow-sm fixed top-0 w-screen bg-slate-200 shadow-gray-400 dark:shadow-slate-800 dark:bg-slate-900 dark:text-white dark:text-grey-900 font-main font-semibold z-30"
+            className="flex px-10  md:px-20 lg:px-40 py-5 justify-between items-center shadow-sm fixed top-0 w-screen bg-slate-200 shadow-gray-400 dark:shadow-slate-800 dark:bg-slate-900 dark:text-slate-200  text-slate-900 font-main font-semibold z-30"
         >
-            <div className=" text-2xl sm:text-3xl">LOGO</div>
+            <div className="  text-2xl sm:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-pink-500  ">
+                LOGO
+            </div>
+            
             
             <ul className="md:flex list-none gap-6 text-lg items-center hidden ">
                 <NavEl text="Home"/>

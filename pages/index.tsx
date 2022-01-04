@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Contact } from '../FrontEnd/components/Contact'
 import { createContext, useContext, useState } from 'react';
 import { GridPopUp } from '../FrontEnd/components/reUseable/GridPopUp'
+import { Techs } from '../FrontEnd/components/Tech'
 export type IsBlured = {
   isBlured: boolean,
   setIsBlured:(b: boolean) => void
@@ -25,6 +26,7 @@ const Home: NextPage = () => {
       <Header />
       <Contact />
       <GridPopUp />
+      <Techs />
     </BlurContext.Provider >
   )
 }
