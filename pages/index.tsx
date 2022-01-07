@@ -2,7 +2,6 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useMenuContext, useThemeContext } from '../FrontEnd/components/layout'
-import { Button } from '../FrontEnd/components/reUseable/Button'
 import { ButtonC } from '../FrontEnd/components/reUseable/ButtonC'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -70,18 +69,13 @@ const Header = () =>{
             animate = "normal"
             whileHover= "scaleMore"
             transition={{ type: "spring", stiffness: 200 }}
-            
-            className={`relative ${ menu ? "hidden" : ""}`}/* "fancy min-w-[18rem] min-h-[18rem] w-72 h-72 lg:w-96 lg:h-96 lg:min-w-[24rem] lg:min-h-[24rem]  relative " */>
+            className={`relative ${ menu ? "hidden" : ""}`}
+        >
               <div className="lg:min-w-[400px] lg:min-h-[470px] min-w-[320px] min-h-[350px] ">
                 <Image src="/Saly-13.png" alt="me" width={450} height={470} />
               </div>
           
-          {/* <div className="absolute top-0 right-0">
-            <Image src="/Succes.png" alt="icon" width={150} height={170} />
-          </div>
-          <div className="absolute bottom-0 right-10 w-36 h-40 max-h-80 max-w-xs">
-            <Image src="/Tick.png" alt="tick" layout="fill" />
-          </div> */}
+          
 
         </motion.div>
       </div>

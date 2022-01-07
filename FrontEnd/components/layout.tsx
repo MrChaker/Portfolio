@@ -1,6 +1,6 @@
 import type { NextPage } from "next"
 import { NavBar } from "./reUseable/Navbar"
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext} from "react";
 export type Menu = {
     menu: boolean,
     setMenu:(b: boolean) => void
@@ -24,12 +24,13 @@ export const useThemeContext = () => useContext(ThemeCentext);
 export const Layout : NextPage = ({children}) => {
     const [menu, setMenu] = useState(false);
     const [darkTheme, setDarkTheme] = useState(false);
-
+    
+    
     return(
         <>
         <ThemeCentext.Provider value={{darkTheme, setDarkTheme}}>
             <MenuCentext.Provider value={{menu, setMenu}}>
-
+                
                 <NavBar />
                 <div className=' min-h-screen px-10 pt-32 md:px-20 lg:px-40 gap-3 bg-slate-200 dark:bg-slate-900 font-main overflow-hidden' id='screen' >
                     {children}
