@@ -5,8 +5,8 @@
       "module": "commonjs",
       "target": "es2017",
       "lib": ["es2017"],
-      "outDir": ".next/server"
+      "outDir": "dist"
     },
-    "include": ["server/**/*.ts"],
+    "include": ["BackEnd/**/*.ts"],
     
   }

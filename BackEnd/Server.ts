@@ -4,8 +4,8 @@ import routes from "./routes";
 
 const PORT = process.env.PORT || 8000 ;
 const dev = process.env.NODE_ENV !== 'production';
-console.log(dev)
-const app = next({ dev : true });
+
+const app = next({ dev });
 const handle = app.getRequestHandler();
 
 app

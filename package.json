@@ -3,9 +3,11 @@
   "private": true,
   "scripts": {
     "dev": "nodemon",
-    "build": "next build",
-    "start": "ts-node --project tsconfig.server.json BackEnd/Server.ts node BackEnd/Server.js",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:server": "tsc --project tsconfig.server.json",
+    "build:next": "next build",
+    "build": "npm run build:next && npm run build:server",
+    "start": " node dist/Server.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
