@@ -4,15 +4,15 @@ import routes from "./routes";
 
 const PORT = process.env.PORT || 8000 ;
 const dev = process.env.NODE_ENV !== 'production';
-
-const app = next({ dev });
+console.log(dev)
+const app = next({ dev : true });
 const handle = app.getRequestHandler();
 
 app
   .prepare()
   .then(() => {
     const server = express();
-    
+
     server.listen(PORT, () => {
         console.log(`> Ready on ${PORT}`);
       });
