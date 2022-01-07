@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "nodemon",
-    "build": "next build && tsc --project tsconfig.server.json",
+    "build": "next build",
     "start": "ts-node --project tsconfig.server.json BackEnd/Server.ts node BackEnd/Server.js",
     "lint": "next lint"
   },
