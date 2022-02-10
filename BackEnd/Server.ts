@@ -16,7 +16,8 @@ app
     server.listen(PORT, () => {
         console.log(`> Ready on ${PORT}`);
       });
-
+    server.use(express.json());
+    server.use(express.urlencoded({extended: true}));
     server.use("/api", routes(server));
 
     server.get("*", (req: any, res: any) => {

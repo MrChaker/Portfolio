@@ -4,93 +4,97 @@ import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { useMenuContext, useThemeContext } from "../layout";
 
-export const NavBar = ()=>{
-    const { menu, setMenu } = useMenuContext();
-    return(
-        
-        <nav
-            id = "nav" 
-            className="flex px-10  md:px-20 lg:px-40 py-5 justify-between items-center shadow-sm fixed top-0 w-screen bg-slate-200 shadow-gray-400 dark:shadow-slate-800 dark:bg-slate-900 dark:text-slate-200  text-slate-900 font-main font-semibold z-30"
-        >
-            <div className="  text-2xl sm:text-3xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-pink-500  ">
-                LOGO
-            </div>
-            
-            
-            <ul className="md:flex list-none gap-6 text-lg items-center hidden ">
-                <NavEl text="Home"/>
-                <NavEl text="About"/>
-                <NavEl text="Contact"/>
-                
-            </ul>
-            <div>
-                <FontAwesomeIcon icon="bars" 
-                    className="md:hidden cursor-pointer text-2xl mr-4"
-                    onClick={()=>setMenu(true)}
-                />
-                <ThemeButton />
-            </div>
+export const NavBar = () => {
+  const { menu, setMenu } = useMenuContext();
+  return (
+    <nav
+      id="nav"
+      className="fixed top-0  z-30 flex w-screen items-center justify-between bg-slate-200 px-10 py-5 font-main font-semibold text-slate-900 shadow-sm shadow-gray-400 dark:bg-slate-900  dark:text-slate-200 dark:shadow-slate-800 md:px-20 lg:px-40"
+    >
+      <div className="  bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-2xl text-transparent sm:text-3xl  ">
+        LOGO
+      </div>
 
-            <div className={` flex md:hidden fixed bg-orange-700 h-screen w-screen left-0 p-6 justify-between ${menu ? "top-0" : "top-[-150%]"} transition-all z-50`}>
-                <ul className=" list-none gap-6 items-center flex flex-col  text-4xl">
-                    <NavEl text="Home"/>
-                    <NavEl text="About"/>
-                    <NavEl text="Contact"/>
-                </ul>
-                <FontAwesomeIcon icon="times" 
-                    className="md:hidden cursor-pointer text-2xl mr-4"
-                    onClick={()=>setMenu(false)}
-                />
-            </div>
-        </nav>
-    )
-}
-const NavEl= (props: any)=>{
-    return(
-    <li>
-        <Link href="#">
-        <a>
-        {props.text}
-        </a>
-        </Link>
-    </li>
-    )
-}
-
-export const ThemeButton = ()=>{
-    const {darkTheme, setDarkTheme} = useThemeContext();
-    useEffect(()=>{
-        if( (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) || localStorage.theme === 'dark'){
-            localStorage.setItem("theme", "dark")
-            setDarkTheme(true)
-        }else if ( !('theme' in localStorage) ) {
-            localStorage.setItem("theme", "light")
-        }
-    },[])
-    useEffect(()=>{
-
-        if (localStorage.theme === 'dark' ) {
-            document.documentElement.classList.add('dark')
-        } else {
-            document.documentElement.classList.remove('dark')
-        }
-        
-    },[darkTheme])
-
-    const setOnStorage = (b : boolean) =>{
-        localStorage.setItem("theme", b ? "dark": "light");
-        setDarkTheme(b);
-
-    }
- return(
-     <>
-        <FontAwesomeIcon 
-            icon={ darkTheme ? "sun" : "moon"} 
-            className={`text-2xl cursor-pointer ${ darkTheme ? "text-yellow-400" : "text-blue-900"}`}
-            onClick={()=>{
-                setOnStorage(!darkTheme);
-            }}
+      <ul className="hidden list-none items-center gap-6 text-lg md:flex ">
+        <NavEl text="Home" />
+        <NavEl text="About" />
+        <NavEl text="Contact" />
+      </ul>
+      <div>
+        <FontAwesomeIcon
+          icon="bars"
+          className="mr-4 cursor-pointer text-2xl md:hidden"
+          onClick={() => setMenu(true)}
         />
+        <ThemeButton />
+      </div>
+
+      <div
+        className={` fixed left-0 flex h-screen w-screen justify-between bg-orange-700 p-6 md:hidden ${
+          menu ? "top-0" : "top-[-150%]"
+        } z-50 transition-all`}
+      >
+        <ul className=" flex list-none flex-col items-center gap-6  text-4xl">
+          <NavEl text="Home" />
+          <NavEl text="About" />
+          <NavEl text="Contact" />
+        </ul>
+        <FontAwesomeIcon
+          icon="times"
+          className="mr-4 cursor-pointer text-2xl md:hidden"
+          onClick={() => setMenu(false)}
+        />
+      </div>
+    </nav>
+  );
+};
+const NavEl = (props: any) => {
+  return (
+    <li>
+      <Link href="#">
+        <a>{props.text}</a>
+      </Link>
+    </li>
+  );
+};
+
+export const ThemeButton = () => {
+  const { darkTheme, setDarkTheme } = useThemeContext();
+  useEffect(() => {
+    if (
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches) ||
+      localStorage.theme === "dark"
+    ) {
+      localStorage.setItem("theme", "dark");
+      setDarkTheme(true);
+    } else if (!("theme" in localStorage)) {
+      localStorage.setItem("theme", "light");
+    }
+  }, []);
+  useEffect(() => {
+    if (localStorage.theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkTheme]);
+
+  const setOnStorage = (b: boolean) => {
+    localStorage.setItem("theme", b ? "dark" : "light");
+    setDarkTheme(b);
+  };
+  return (
+    <>
+      <FontAwesomeIcon
+        icon={darkTheme ? "sun" : "moon"}
+        className={`cursor-pointer text-2xl ${
+          darkTheme ? "text-yellow-400" : "text-blue-900"
+        }`}
+        onClick={() => {
+          setOnStorage(!darkTheme);
+        }}
+      />
     </>
- )
-}
+  );
+};
