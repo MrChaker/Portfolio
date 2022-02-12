@@ -6,7 +6,27 @@
 * {
   box-sizing: border-box;
 }
+.Glowing::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: -5px;
+  left: -1%;
+  height: 110%;
+  width: 100%;
+  opacity: 0.8;
+  border-radius: 10px;
 
+  /* Declaring our shadow color inherit from the parent (button) */
+  background: inherit;
+
+  /* Blurring the element for shadow effect */
+  -webkit-filter: blur(6px);
+  -moz-filter: blur(6px);
+  -o-filter: blur(6px);
+  -ms-filter: blur(6px);
+  filter: blur(6px);
+}
 .lightShadow {
   box-shadow: 0 0 10px #0f172a45;
 }

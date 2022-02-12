@@ -11,6 +11,11 @@ export const Header = () => {
   const { menu } = useMenuContext();
   const { darkTheme } = useThemeContext();
   const { isBlured, setIsBlured } = useBlurContext();
+
+  //for a stupind bug 
+  const type: "reverse" | "loop" | "mirror" | undefined = 'reverse';
+
+  
   const ImageAnimation = {
     init: {
       scale: 0, 
@@ -22,7 +27,7 @@ export const Header = () => {
     },
     bounce:{
       y: -25,
-      transition: { stifness: 0, repeat: Infinity, duration: 0.7 }
+      transition: { stifness: 0, repeat: Infinity, repeatType: type, duration: 0.7 }
     },
     scaleMore: {
       scale: 1.4,
@@ -61,7 +66,7 @@ export const Header = () => {
           animate="normal"
           whileInView="bounce"
           /* whileHover="scaleMore" */
-          transition={{ type: "spring", stiffness: 200, repeatType: 'reverse' }}
+          transition={{ type: "spring", stiffness: 200 }}
           className={`relative ${menu ? "hidden" : ""}`}
         >
           <div className="relative min-h-[350px] min-w-[320px] lg:min-h-[470px] lg:min-w-[400px]">

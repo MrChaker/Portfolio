@@ -101,7 +101,7 @@ const Progress = ()=>{
   const pr = useRef<HTMLDivElement>(null!);
   useEffect(()=>{
     const height = document.body.clientHeight - window.innerHeight;
-    const fraction: number = window.innerWidth / (height) ;
+    const fraction: number = window.outerWidth / (height) ;
 
     if (pr.current)
     pr.current.style.width = `${window.scrollY* fraction}px`;
@@ -110,7 +110,7 @@ const Progress = ()=>{
     });
   }, [])
   return(
-    <div ref={pr} className="fixed h-[4.8rem] sm:h-20 z-[29] bg-gradient-to-r from-blue-500 to-pink-500 transition shadow-lg ">
+    <div ref={pr} className="fixed h-[4.8rem] sm:h-20 z-[29] bg-gradient-to-r from-blue-500 dark:from-blue-700 to-pink-500 dark:to-pink-600 transition Glowing">
         
     </div>
   )
