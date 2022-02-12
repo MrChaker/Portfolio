@@ -22,7 +22,7 @@ export const Header = () => {
     },
     bounce:{
       y: -25,
-      transition: { stifness: 0, repeat: Infinity, repeatType: 'reverse', duration: 0.7 }
+      transition: { stifness: 0, repeat: Infinity, duration: 0.7 }
     },
     scaleMore: {
       scale: 1.4,
@@ -61,7 +61,7 @@ export const Header = () => {
           animate="normal"
           whileInView="bounce"
           /* whileHover="scaleMore" */
-          transition={{ type: "spring", stiffness: 200 }}
+          transition={{ type: "spring", stiffness: 200, repeatType: 'reverse' }}
           className={`relative ${menu ? "hidden" : ""}`}
         >
           <div className="relative min-h-[350px] min-w-[320px] lg:min-h-[470px] lg:min-w-[400px]">
