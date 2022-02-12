@@ -1,6 +1,9 @@
 import type { NextPage } from "next";
 import { NavBar } from "./reUseable/Navbar";
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext, useEffect, useRef } from "react";
+import { Canvas } from "@react-three/fiber";
+import Cube3d from "./threeD/cube";
+import Image from "next/image";
 export type Menu = {
   menu: boolean;
   setMenu: (b: boolean) => void;
@@ -41,3 +44,5 @@ export const Layout: NextPage = ({ children }) => {
     </>
   );
 };
+
+

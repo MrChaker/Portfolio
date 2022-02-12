@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import { useBlurContext } from "../../pages";
 import { Canvas } from "@react-three/fiber";
+import { reverse } from "dns/promises";
 
 export const Header = () => {
   const { menu } = useMenuContext();
@@ -12,11 +13,16 @@ export const Header = () => {
   const { isBlured, setIsBlured } = useBlurContext();
   const ImageAnimation = {
     init: {
-      scale: 0,
+      scale: 0, 
       transition: { delay: 1.2 },
     },
     normal: {
-      scale: 1.2,
+      scale: 1.4,
+      y: +25
+    },
+    bounce:{
+      y: -25,
+      transition: { stifness: 0, repeat: Infinity, repeatType: 'reverse', duration: 0.7 }
     },
     scaleMore: {
       scale: 1.4,
@@ -30,11 +36,9 @@ export const Header = () => {
           isBlured ? " blur-sm " : ""
         }`}
       >
-        <div className="max-w-sm text-center text-3xl text-slate-900 dark:text-slate-200 md:text-left lg:text-5xl">
-          {/* <h1>Hello 👋, I&apos;m Chaker</h1> */}
-          <Canvas>
-            <mesh></mesh>
-          </Canvas>
+        <div className="max-w-md text-center text-3xl text-slate-900 dark:text-slate-200 md:text-left lg:text-5xl">
+          <h1>Hello 👋, I&apos;m Chaker</h1>
+          
           <p className="my-7 text-xl lg:text-3xl">
             Web developer , trying to find meaning in life after achieving 0.1%
             of life goals{" "}
@@ -55,7 +59,8 @@ export const Header = () => {
           variants={ImageAnimation}
           initial="init"
           animate="normal"
-          whileHover="scaleMore"
+          whileInView="bounce"
+          /* whileHover="scaleMore" */
           transition={{ type: "spring", stiffness: 200 }}
           className={`relative ${menu ? "hidden" : ""}`}
         >

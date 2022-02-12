@@ -26,7 +26,7 @@ export const ButtonC = (props: any) => {
         onMouseLeave={() => setAnimateImage(false)}
         onClick={props.onClick}
         animate={{ x: 0 }}
-        className={` cursor-crosshair p-4 px-8  ${
+        className={` cursor-pointer p-4 px-8  ${
           props.rounded ? "rounded-full" : "rounded-md"
         } justify-center border border-solid ${props.style} ${
           props.block ? "block" : "inline-block"
