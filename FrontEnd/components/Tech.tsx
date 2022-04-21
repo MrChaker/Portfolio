@@ -6,6 +6,7 @@ import { useWindowWidth } from "../../hooks/useWindowWidth";
 import { Mesh, DirectionalLight, TextureLoader } from "three";
 import useMouse from '@react-hook/mouse-position'
 import type {MousePosition} from "@react-hook/mouse-position"
+import Laptop from "./threeD/laptop"
 export const Techs = () => {
   const { darkTheme } = useThemeContext();
   const canvas = useRef(null!);
@@ -25,7 +26,7 @@ export const Techs = () => {
           <div ref={canvas} className="h-full w-full">
             <Canvas>
               <Suspense fallback={null}>
-                <CanvasComp mousePos={pointerPos}/>
+                <CanvasComp mousePos={pointerPos} />
               </Suspense>
             </Canvas>
           </div>

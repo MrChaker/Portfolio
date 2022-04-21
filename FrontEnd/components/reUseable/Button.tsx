@@ -2,10 +2,11 @@ import { motion } from "framer-motion";
 
 export const Button = (props: any) => {
   return (
-    <motion.div
+    <motion.button
       id="btn"
       initial={{ x: "-100vw", opacity: 0 }}
       onClick={props.onClick}
+      type={props.type}
       animate={{ x: 0, opacity: 1 }}
       className={` cursor-pointer p-4 px-8  ${
         props.rounded ? "rounded-full" : "rounded-md"
@@ -22,6 +23,6 @@ export const Button = (props: any) => {
       <p className={`mr-4 inline-block`}>{props.leftIcon}</p>
       {props.text}
       <p className={`ml-4 inline-block`}>{props.rightIcon}</p>
-    </motion.div>
+    </motion.button>
   );
 };

@@ -12,30 +12,7 @@ export const Contact = () => {
   const email: MutableRefObject<HTMLInputElement | null> = useRef(null);
   const message: MutableRefObject<HTMLTextAreaElement | null> = useRef(null);
 
-  const Submit = async (e: Event): Promise<void> => {
-    e.preventDefault();
-    try {
-      const res = await fetch("/api/message", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          firstName: firstName.current != null ? firstName.current.value : "",
-          familyName:
-            familyName.current != null ? familyName.current.value : "",
-          email: email.current != null ? email.current.value : "",
-          message: message.current != null ? message.current.value : "",
-        }),
-      });
-      const result = await res.json();
-      alert(
-        ` Thanks ❤️️ for contacting me '${result.sender}', I'll responde as soon as possible 😇 `
-      );
-    } catch (err) {
-      alert(`⚠⚠ Sorry , we are down now , Try again later `);
-    }
-  };
+  const Submit = async (e: Event): Promise<void> => {};
   return (
     <>
       <div
@@ -63,7 +40,12 @@ export const Contact = () => {
               <Image src="/Saly-44.png" width={300} height={300} />
             </motion.div>
           </div>
-          <form className=" w-full sm:w-1/2 ">
+          <form
+            action="https://formspree.io/f/xlezpnka"
+            method="POST"
+            encType="multipart/form-data"
+            className=" w-full sm:w-1/2 "
+          >
             <div className="flex w-full flex-col justify-between lg:flex-row">
               <div className="w-full lg:w-5/12">
                 <label
@@ -74,6 +56,7 @@ export const Contact = () => {
                 </label>
                 <input
                   ref={firstName}
+                  name="fistName"
                   type="text"
                   className=" my-2 w-full border-b-2    border-solid border-slate-700 bg-transparent px-1 py-1 outline-none"
                 />
@@ -88,6 +71,7 @@ export const Contact = () => {
                 </label>
                 <input
                   ref={familyName}
+                  name="familyName"
                   type="text"
                   className=" mt-2 w-full border-b-2    border-solid border-slate-700 bg-transparent px-1 py-1 outline-none"
                 />
@@ -99,6 +83,7 @@ export const Contact = () => {
             <input
               ref={email}
               type="text"
+              name="email"
               className=" mt-2 w-full border-b-2    border-solid border-slate-700 bg-transparent px-1 py-1 outline-none"
             />
             <label htmlFor="message" className="mt-6 block text-slate-800">
@@ -106,6 +91,7 @@ export const Contact = () => {
             </label>
             <textarea
               ref={message}
+              name="message"
               rows={5}
               cols={3}
               className=" my-2 w-full border-b-2    border-solid border-slate-700 bg-transparent px-1 py-1 outline-none"
@@ -119,7 +105,8 @@ export const Contact = () => {
                   rounded
                   block
                   style="text-center"
-                  onClick={(e: Event) => Submit(e)}
+                  type="submit"
+                  /* onClick={(e: Event) => Submit(e)} */
                 />
               </div>
             </div>

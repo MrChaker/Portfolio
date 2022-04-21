@@ -5,7 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import { useBlurContext } from "../../pages";
 import { Canvas } from "@react-three/fiber";
-import { reverse } from "dns/promises";
+import { Suspense } from "react";
+import Text3D from "./threeD/text"
 
 export const Header = () => {
   const { menu } = useMenuContext();
@@ -13,9 +14,9 @@ export const Header = () => {
   const { isBlured, setIsBlured } = useBlurContext();
 
   //for a stupind bug 
-  const type: "reverse" | "loop" | "mirror" | undefined = 'reverse';
+  const reverse: "reverse" = 'reverse';
 
-  
+
   const ImageAnimation = {
     init: {
       scale: 0, 
@@ -27,7 +28,7 @@ export const Header = () => {
     },
     bounce:{
       y: -25,
-      transition: { stifness: 0, repeat: Infinity, repeatType: type, duration: 0.7 }
+      transition: { stifness: 0, repeat: Infinity, repeatType: reverse, duration: 0.7 }
     },
     scaleMore: {
       scale: 1.4,
@@ -41,9 +42,13 @@ export const Header = () => {
           isBlured ? " blur-sm " : ""
         }`}
       >
-        <div className="max-w-md text-center text-3xl text-slate-900 dark:text-slate-200 md:text-left lg:text-5xl">
-          <h1>Hello 👋, I&apos;m Chaker</h1>
-          
+        <div className="max-w-md text-center text-3xl text-slate-900 dark:text-slate-200 md:text-left lg:text-5xl ">
+          {/* <h1>Hello 👋, I&apos;m Chaker</h1> */}
+          <Canvas>
+            <Suspense fallback={null}>
+              <Text3D text="I" size={100} height={50}/>
+            </Suspense>
+          </Canvas>
           <p className="my-7 text-xl lg:text-3xl">
             Web developer , trying to find meaning in life after achieving 0.1%
             of life goals{" "}
