@@ -9,9 +9,12 @@ export const NavBar: React.FC = () => {
         id="nav"
         className="fixed top-0  z-30 flex w-screen items-center justify-between bg-slate-200 px-10 py-5 font-main font-semibold text-slate-900 shadow-sm shadow-gray-400 dark:bg-slate-900  dark:text-slate-200 dark:shadow-slate-800 md:px-20 lg:px-40"
       >
-        <div className="  bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-2xl text-transparent sm:text-3xl  ">
-          LOGO
-        </div>
+        <a
+          className="  bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-2xl text-transparent sm:text-4xl font-bold drop-shadow-Hello block"
+          href="/"
+        >
+          Chaker
+        </a>
 
         <ul className="hidden list-none items-center gap-6 text-lg md:flex ">
           <NavEl text="Home" />

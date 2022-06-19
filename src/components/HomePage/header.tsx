@@ -7,6 +7,7 @@ import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
 import WelcomeImage from '../Assets/Saly-13.png'
 import MessageImg from '../Assets/Message.png'
+import Balls from 'components/threeD/Balls'
 
 export const Header = () => {
   const { menu } = useMenuContext()
@@ -46,8 +47,10 @@ export const Header = () => {
           isBlured ? ' blur-sm ' : ''
         }`}
       >
-        <div className="max-w-md text-center text-3xl text-slate-900 dark:text-slate-200 md:text-left lg:text-5xl ">
-          <h1>Hello 👋, I&apos;m Chaker</h1>
+        <div className="max-w-md text-center text-3xl sm:text-5xl text-slate-900 dark:text-slate-200 md:text-left lg:text-6xl ">
+          <h1 className=" font-extrabold drop-shadow-Hello ">
+            Hello 👋, I&apos;m Chaker
+          </h1>
           {/* <Canvas>
             <Suspense fallback={null}>
               <Text3D text="I Chaker" size={100} height={50} />
@@ -79,12 +82,13 @@ export const Header = () => {
           className={`relative ${menu ? 'hidden' : ''}`}
         >
           <div className="relative min-h-[350px] min-w-[320px] lg:min-h-[470px] lg:min-w-[400px]">
-            {/* <div className="absolute top-4 left-12 w-20 h-20">
-                    <Canvas>
-                      <Cube3d />
-                    </Canvas>
-                </div> */}
-
+            <div className="absolute w-full h-full -z-10">
+              <Canvas>
+                <Suspense fallback={null}>
+                  <Balls />
+                </Suspense>
+              </Canvas>
+            </div>
             <img src={WelcomeImage} alt="me" width={450} height={470} />
           </div>
         </motion.div>

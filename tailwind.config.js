@@ -16,6 +16,9 @@ module.exports = {
         'x2-1': '-40% 60% 0px',
         'x2-2': '100% 30% 0px',
         x3: '0 260% 0px'
+      },
+      dropShadow: {
+        Hello: '4px 5px 10px rgb(167, 187, 200)'
       }
     },
     fontFamily: {
