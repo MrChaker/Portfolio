@@ -38,7 +38,7 @@ export const GridPopUp = () => {
   return (
     <>
       <div className={` my-10   ${isBlured ? 'blur-sm' : ''}`}>
-        <h1 className="text-center text-5xl text-slate-900 dark:text-slate-200">
+        <h1 className="text-center text-5xl text-slate-900 dark:text-slate-200 font-bold">
           {' '}
           My Skills{' '}
         </h1>

@@ -1,6 +1,5 @@
 import { NavBar } from '../general/Navbar'
 import { useState, createContext, useContext, ReactNode } from 'react'
-import { Canvas } from '@react-three/fiber'
 export type Menu = {
   menu: boolean
   setMenu: (b: boolean) => void

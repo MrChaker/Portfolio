@@ -2,6 +2,7 @@ import { useState, useContext, createContext } from 'react'
 import { GridPopUp } from './general/GridPopUp'
 import { Contact } from './HomePage/Contact'
 import { Header } from './HomePage/header'
+import { Techs } from './HomePage/Techs'
 
 import { Layout } from './Layouts/Layout'
 
@@ -24,7 +25,7 @@ function App() {
         <Header />
         <Contact />
         <GridPopUp />
-        {/* <Techs /> */}
+        <Techs />
       </BlurContext.Provider>
     </Layout>
   )

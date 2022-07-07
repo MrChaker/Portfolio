@@ -4,10 +4,10 @@ import { ButtonC } from '../general/ButtonC'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useBlurContext } from '../App'
 import { Canvas } from '@react-three/fiber'
-import { Suspense } from 'react'
+import { RefAttributes, Suspense, useEffect, useRef } from 'react'
 import WelcomeImage from '../Assets/Saly-13.png'
 import MessageImg from '../Assets/Message.png'
-import Balls from 'components/threeD/Balls'
+import Balls from 'components/threeD/TechBall'
 
 export const Header = () => {
   const { menu } = useMenuContext()
@@ -40,6 +40,7 @@ export const Header = () => {
       transition: { stifness: 0 }
     }
   }
+
   return (
     <>
       <div
@@ -47,7 +48,7 @@ export const Header = () => {
           isBlured ? ' blur-sm ' : ''
         }`}
       >
-        <div className="max-w-md text-center text-3xl sm:text-5xl text-slate-900 dark:text-slate-200 md:text-left lg:text-6xl ">
+        <div className="max-w-md text-center text-3xl sm:text-5xl text-slate-900 dark:text-slate-200 md:text-left lg:text-6xl min-w-[320px] lg:min-w-[420px]">
           <h1 className=" font-extrabold drop-shadow-Hello ">
             Hello 👋, I&apos;m Chaker
           </h1>
@@ -57,8 +58,10 @@ export const Header = () => {
             </Suspense>
           </Canvas> */}
           <p className="my-7 text-xl lg:text-3xl">
-            Web developer , trying to find meaning in life after achieving 0.1%
-            of life goals{' '}
+            <span className="font-extrabold drop-shadow-Hellov text-2xl lg:text-4xl">
+              Web developer
+            </span>{' '}
+            , trying to find meaning in life after achieving 0.1% of life goals{' '}
           </p>
           <ButtonC
             color={darkTheme ? '#e2e8f0' : `#0f172a`}
@@ -82,10 +85,14 @@ export const Header = () => {
           className={`relative ${menu ? 'hidden' : ''}`}
         >
           <div className="relative min-h-[350px] min-w-[320px] lg:min-h-[470px] lg:min-w-[400px]">
-            <div className="absolute w-full h-full -z-10">
+            <div className="absolute w-full h-full -z-10 ">
               <Canvas>
-                <Suspense fallback={null}>
-                  <Balls />
+                <Suspense
+                  fallback={
+                    <div className="rounded-full h-16 w-16 bg-orange-700 "></div>
+                  }
+                >
+                  {/* <Balls /> */}
                 </Suspense>
               </Canvas>
             </div>
