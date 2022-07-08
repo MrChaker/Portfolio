@@ -49,7 +49,7 @@ export const Header = () => {
         }`}
       >
         <div className="max-w-md text-center text-3xl sm:text-5xl text-slate-900 dark:text-slate-200 md:text-left lg:text-6xl min-w-[320px] lg:min-w-[420px]">
-          <h1 className=" font-extrabold drop-shadow-Hello ">
+          <h1 className=" font-extrabold drop-shadow-dark dark:drop-shadow-light">
             Hello 👋, I&apos;m Chaker
           </h1>
           {/* <Canvas>
@@ -58,7 +58,7 @@ export const Header = () => {
             </Suspense>
           </Canvas> */}
           <p className="my-7 text-xl lg:text-3xl">
-            <span className="font-extrabold drop-shadow-Hellov text-2xl lg:text-4xl">
+            <span className="font-extrabold drop-shadow-dark dark:drop-shadow-light text-2xl lg:text-4xl">
               Web developer
             </span>{' '}
             , trying to find meaning in life after achieving 0.1% of life goals{' '}

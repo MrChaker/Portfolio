@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       boxShadow: {
         light: '1px 01px 10px 0px #0f172a45',
-        dark: '1px 01px 10px -2px #ffffff30'
+        dark: '1px 01px 10px -2px #ffffff19'
       },
       transformOrigin: {
         x2: '-200% 60% 0px',
@@ -18,7 +18,8 @@ module.exports = {
         x3: '0 260% 0px'
       },
       dropShadow: {
-        Hello: '4px 5px 10px rgb(167, 187, 200)'
+        dark: '4px 5px 10px rgb(167, 187, 200)',
+        light: '4px 5px 10px #ffffff30'
       }
     },
     fontFamily: {
